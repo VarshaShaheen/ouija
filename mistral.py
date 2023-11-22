@@ -1,10 +1,14 @@
+import os
+
 from litellm import completion
 
 from constants import BASE_PROMPT
 
+os.environ["OPENAI_API_KEY"] = "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"
+
 
 class Mistral:
-    def __init__(self, ghost, model="ollama/mistral:7b-instruct"):
+    def __init__(self, ghost, model="gpt-3.5-turbo"):
         with open(ghost) as f:
             self.system_prompt = f.read()
             self.system_prompt += BASE_PROMPT
@@ -18,8 +22,7 @@ class Mistral:
         self.messages.append({"content": question, "role": "user"})
         answer = completion(
             model=self.model,
-            messages=self.messages,
-            api_base="http://localhost:11434"
+            messages=self.messages
         )
 
         text = answer["choices"][0].message.content
