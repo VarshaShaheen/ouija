@@ -4,7 +4,7 @@ from litellm import completion
 
 from constants import BASE_PROMPT
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "API KEY"
 
 
 class Mistral:
